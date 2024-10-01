@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GimnasioPro/presupuesto</title>
+    <link rel="stylesheet" href="../css/Estilos.css">
+</head>
+<body>
+    <header>
+        <nav id="nav">
+            <img id="logo" src="../assets/img/icono.jpg" alt="Logo de empresa" width="100" height="100">
+            <ul>
+                <li><a href="../Index.html">Inicio</a></li>
+                <li><a href="../Views/Galeria.html">Galeria</a></li>
+                <li><a href="../Views/Presupuesto.html" class="active">Presupuesto</a></li>
+                <li><a href="../Views/Contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Formulario de solicitud</h1>
+        <!--Primera parte del formulario-->
+        <form action="proceso.php" id="formulario" name="formulario" method="post">
+            <fieldset>
+                <legend>Datos</legend>
+                <div>
+                    <label for="nombreForm">Nombre</label>
+                    <input type="text" id="nombreForm" name="nombreForm" placeholder="Escribe tu nombre">
+                </div>
+                <div>
+                    <label for="apellidoForm">Apellido</label>
+                    <input type="text" id="apellidoForm" name="apellidoForm" placeholder="Escribe tu apellido">
+                </div>
+                <div>
+                    <label for="tfnForm">teléfono de contacto</label>
+                    <input type="number" id="tfnForm" name="tfnForm" placeholder="Escribe tu teléfono">
+                </div>
+                <div>
+                    <label for="emailForm">Email</label>
+                    <input type="email" id="emailForm" name="emailForm" placeholder="Escribe tu email">
+                </div>
+            </fieldset>
+            <!--Segunda parte del formulario-->
+            <fieldset>
+                <legend>Presupuesto</legend>
+                <div>
+                    <label for="actividades">Selecciona tu plan</label>
+                    <select id="actividades" name="actividades">
+                        <option value="">Selecciona un plan</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="boxeo">Boxeo</option>
+                        <option value="soloGym">Solo gimnasio</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="plazo">Elige tu plazo</label>
+                    <input type="number" id="plazo" name="plazo" placeholder="12">
+                </div>
+                <div>
+                    <label>Elige tus extras:</label>
+                    <label for="extra1">
+                        <input type="checkbox" name="extras" id="extra1" value="extra1">
+                        Bebidas minerales
+                    </label>
+                    <label for="extra2">
+                        <input type="checkbox" name="extras" id="extra2" value="extra2">
+                        Mochila
+                    </label>
+                    <label for="extra3">
+                        <input type="checkbox" name="extras" id="extra3" value="extra3">
+                        Personal trainer
+                    </label>
+                </div>
+                <div>
+                    <label for="PresupuestoEsti">Presupuesto estimado</label>
+                    <input type="text" name="PresupuestoEsti" id="PresupuestoEsti">
+                </div>
+            </fieldset>
+            <fieldset>
+                <!--Parte de las condiciones-->
+                <legend>Condiciones y presupuesto</legend>
+                <div>
+                    <label for="condiciones">He leido y acepto las condiciones</label>
+                    <input type="checkbox" name="condiciones" id="condiciones">
+                </div>
+                <!--Div para los botones-->
+                <div>
+                    <label for="enviar">Enviar formulario</label>
+                    <button type="submit" id="enviar">Enviar</button>
+                    <label for="reiniciar">Reiniciar formulario</label>
+                    <input type="reset" name="reiniciar" id="reiniciar">
+                </div>
+            </fieldset>
+        </form>
+    </main>
+    <footer id="footer">
+       <a href="/Contacto.html"><img src="../assets/img/contact-mail.png" alt="contacto"><p>Contacto</p></a>
+        <a href="Views/Galeria.html"><img src="../assets/img/image-galery.png" alt="galeria"><p>Galeria</p></a>
+        <a href="Views/Presupuesto.html"> <img src="../assets/img/contact-form.png" alt=""><p>Presupuesto</p></a>
+        <p class="copyright">©Todos los derechos de imagen están reservados</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/Script.js"></script>
+</body>
+</html>

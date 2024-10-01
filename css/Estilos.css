@@ -1,0 +1,401 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*---------NAVEGADOR--------*/
+#nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos dentro de #nav */
+    background-color: #595E2A;
+    width: 100%;
+    height: 50px; /* Altura de la barra de navegación */
+    padding: 0 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/*imagen del navegador */
+#nav img {
+    width: 60px; /* Tamaño del logo */
+    height: 50px; /* Altura del logo */
+    border-radius: 50%;
+    margin-right: 20px; 
+}
+
+#nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; 
+    justify-content: flex-end; /* alinea los enlaces hacia la derecha */
+}
+
+#nav ul li {
+    margin: 0 30px; /*espacio entre los elementos de la lista */
+}
+
+#nav ul li a {
+    display: flex; /*uso de Flexbox */
+    text-transform: uppercase;
+    font-size: 16px;
+    text-decoration: none; 
+    font-weight: bold;
+    color: #fff;
+    transition: color 0.5s ease;
+    padding: 10px; 
+    height: 100%; /* Hace que el enlace llene todo el contenedor */
+}
+
+#nav ul li a:hover {
+    color: #E8FE1C; /* color del hover  */
+}
+
+#nav ul li a.active {
+    color: orange; /* color del enlace activo */
+}
+
+#nav ul li a:focus {
+    outline: none;
+    color: #FFD700; /* Añade un color al enlace enfocado */
+}
+
+/*---------CAROUSEL--------*/
+
+.carousel {
+    width: 60%; /* Tamaño del carrusel */
+    margin: auto;
+}
+
+/*imagenes*/
+
+.carousel-item img {   
+    margin-top: 60px;
+    width: 100%; 
+    height: 300px; 
+    border-radius: 20px; 
+}
+/*botones*/
+
+button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+/* Estilo para el título de la tabla */
+#tablaPrecios h1 {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    padding: 20px; 
+    background-color: #333; 
+    color: #fff; 
+    text-transform: uppercase; 
+}
+/* estilos tabla de precios */
+#tablaMod{
+    width: 100%;
+    margin: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos para las celdas de la tabla */
+#tablaPrecios td{
+    padding: 10px;
+    color: #333;
+    background-color: #ffffff;
+}
+
+/* Estilo para todas las filas de la tabla */
+#tablaPrecios .clasePrimera {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background: linear-gradient(15deg,#333,#d7263d);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    padding: 20px 20px;
+}
+/*hoover*/
+#tablaPrecios tr:hover td {
+    background-color: aqua; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/*------------Parte de los blogs----------*/
+/* Encabezado del blog */
+#blog h2 {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    padding: 20px; 
+    background-color: #333; 
+    color: #fff; 
+    text-transform: uppercase;
+}
+
+/* Contenedor de los blogs */
+#blogClases {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    gap: 20px; /* espacio entre los elementos */
+    padding: 10px 5px; 
+}
+
+/* Contenedor de cada blog */
+.blog1 {
+    position: relative;
+    width: 180px; 
+    height: 120px;
+    margin: 5px;
+    border-radius: 15px; 
+    overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación en hover */
+}
+
+/* Hover*/
+.blog1:hover {
+    transform: translateY(-5px); /* Eleva el blog en hover */
+}
+
+/* Texto dentro de las imágenes */
+.textoImagen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    pointer-events: none; /* Evita que el texto interfiera con el enlace */
+}
+
+/* Imagen dentro del blog (*/
+.blog1 img {
+    width: 100%;
+    height: 100%;
+}
+
+/*-----------------parte de noticias fit-----------*/
+#noticias h3{
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    padding: 20px; 
+    background-color: #333; 
+    color: #fff; 
+    text-transform: uppercase;
+}
+
+#noticiasFit {
+    background-color:#fff; 
+    border: 5px solid #595E2A; 
+    border-radius: 20px; 
+    padding: 10px; 
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif; /* Fuente que encaja */
+}
+#noticiasFit strong {
+    color: #2c3150;
+}
+#noticiasFit a {
+    color: #3498db;
+    text-decoration: none; 
+}
+
+#noticiasFit a:hover {
+    text-decoration: underline; 
+}
+
+/*----------------foooteeer-----------*/
+
+#footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 5px;
+    background-color: #595E2A;
+    color: #333;
+    flex-wrap: wrap;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    margin: 10px;
+}
+
+#footer img {
+    width: 30px; /* Ajusta el tamaño de los iconos */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+#footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.copyright {
+    flex-basis: 100%; 
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+/*ajustes al body*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #febe1c;
+}
+
+/*---------Galeria dinámica--------*/
+#galeriaDinamica h1{
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin:5 10px;
+    padding: 20px; 
+    background-color: #333; 
+    color: #fff; 
+    text-transform: uppercase;
+}
+.imgGal{
+    width: 350px;
+    height: 200px;
+    margin: 10px;
+    margin-left: 15px;
+}
+
+/*--------Presupuesto------*/
+h1{
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px; 
+    background-color: #222;
+    color: #fff; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 8px;
+}
+
+form {
+    background: #fff; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 20px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+fieldset {
+    border:none;
+    margin-bottom: 10px;
+}
+
+legend {
+    font-size: 25px; 
+    margin-bottom: 10px;
+    color: #595E2A; 
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+    color: #333; 
+}
+/*estilos para los inputs */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 80%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+}
+ 
+/*botones del formulario*/
+
+button {
+    background-color: #595E2A;
+    color: white; 
+    padding: 10px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+button:hover {
+    background-color: #4B4E25;
+}
+
+input[type="reset"] {
+    background-color: #f44336; 
+    color: white; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+input[type="reset"]:hover {
+    background-color: #c62828; 
+}
+/*-------Contacto--------*/
+#datosContacto {
+    background-color: #ffffff; 
+    padding: 20px; 
+    border-radius: 8px;
+}
+
+#datosContacto h1 {
+    width: 100%;
+    font-size: 40px;
+    margin: 15px;
+    padding: 20px; 
+    background-color: #222; 
+    color: #fff; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+}
+
+#datosContacto p {
+    color: #333; 
+    line-height: 1.6; 
+    margin: 5px 0; 
+}
+
+#datosContacto a {
+    color: #007BFF; 
+    text-decoration: none; 
+}
+
+#datosContacto a:hover {
+    color: #0056b3;
+}
+
+#mapa{
+    width: 100%;
+    height: 500px;
+}
