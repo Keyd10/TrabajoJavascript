@@ -14,7 +14,7 @@ showSlide(currentIndex);
 //Cargar datos del JSON
 function cargar() {
     $.ajax({
-        url: "../Json/noticias.json", // Usa esta ruta si el archivo JSON está en la carpeta 'Json'
+        url: "../JSON/noticias.json", // Usa esta ruta si el archivo JSON está en la carpeta 'Json'
         type: "GET",
         dataType: "json",
         success: function(data) {
