@@ -11,37 +11,39 @@ function showSlide(index) {
 // Iniciar el carrusel
 showSlide(currentIndex);
 
-//Cargar datos del JSON
 function cargar() {
-    $.ajax({
-        url: "/TrabajoJavascript/Json/noticias.json", // Usa esta ruta si el archivo JSON está en la carpeta 'Json'
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-            console.log("Solicitud AJAX exitosa");
-            console.log(data); // Verifica el contenido del JSON
+    // Verificar si existe el div con el id "noticiasFit para evitar el alert en otras páginas"
+    if (document.getElementById("noticiasFit")) {
+        $.ajax({
+            url: "./Json/noticias.json",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                console.log("Solicitud AJAX exitosa");
+                console.log(data); // Verifica el contenido del JSON
 
-            let obj_json = data;
-            let cadena = ""; // Inicializa la variable cadena
+                let obj_json = data;
+                let cadena = ""; 
 
-            for (let i = 0; i < obj_json.noticias.length; i++) {
-                cadena += "Título: <strong>" + obj_json.noticias[i].titulo + "</strong><br>";
-                cadena += "Descripción: <strong>" + obj_json.noticias[i].descripcion + "</strong><br>";
-                cadena += "Fecha: <strong>" + obj_json.noticias[i].fecha + "</strong><br>";
-                cadena += "Enlace: <a href='" + obj_json.noticias[i].enlace + "'>" + obj_json.noticias[i].enlace + "</a><br><br>";
+                for (let i = 0; i < obj_json.noticias.length; i++) {
+                    cadena += "Título: <strong>" + obj_json.noticias[i].titulo + "</strong><br>";
+                    cadena += "Descripción: <strong>" + obj_json.noticias[i].descripcion + "</strong><br>";
+                    cadena += "Fecha: <strong>" + obj_json.noticias[i].fecha + "</strong><br>";
+                    cadena += "Enlace: <a href='" + obj_json.noticias[i].enlace + "'>" + obj_json.noticias[i].enlace + "</a><br><br>";
+                }
+
+                console.log("Contenido generado: ", cadena); 
+                $("#noticiasFit").html(cadena); // 
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al cargar el archivo JSON: ", status, error); 
+                alert("Error al cargar el archivo JSON");
             }
-
-            console.log("Contenido generado: ", cadena); // Verifica el contenido generado
-            $("#noticiasFit").html(cadena); // Inserta el contenido en el div
-        },
-        error: function(xhr, status, error) {
-            console.error("Error al cargar el archivo JSON: ", status, error); // Muestra errores en la consola
-            alert("Error al cargar el archivo JSON");
-        }
-    });
+        });
+    }
 }
-cargar()
 
+cargar();
 /*--------------------Formulario---------------*/
 
 // Verifica si existe el botón 'enviar' y el formulario antes de añadir el eventListener
@@ -193,51 +195,60 @@ function calcularPresupuesto(){
 }
 
 /*-----------CONTACTO--------------*/
+// Opciones para geolocalización
 let options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
+};
+
+// Validar si el mapa existe en la página para que no pida la geolocalización en todas las pag
+if (document.getElementById("mapa")) {
+
+    // Si la geolocalización está disponible
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+        alert("Los servicios de geolocalización no están disponibles");
+    }
+
+    // funcion si va bien
+    function success(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        // Crear el mapita
+        let map = L.map('mapa', {
+            center: [latitude, longitude],
+            zoom: 17
+        });
+
+        // añadir la capa
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '¡Encuéntranos con este mapa!'
+        }).addTo(map);
+
+        // control de rutas
+        L.Routing.control({
+            waypoints: [
+                L.latLng(latitude, longitude),  // Punto de partida: ubicación actual
+                L.latLng(40.492639, -3.653881)  // Punto de destino
+            ],
+            language: 'es'
+        }).addTo(map);
+    }
+
+    // por si va mal la cosa
+    function error() {
+        // Si da fallo la geolocalización, carga imagen mapa
+        let map = L.map('mapa', {
+            center: [40.49367, -3.65894], // Ubicación predeterminada
+            zoom: 14
+        });
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Mapa de muestra'
+        }).addTo(map);
+    }
 }
-if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-        success,
-        error,
-        options
-    )
-}else{
-    alert("Los servicios de geolocalización no están disponibles");
-}
 
-
-
-function success(position){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-
-    let map = L.map('mapa',{
-        center:[latitude,longitude],
-        zoom:17
-    })
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'¡Encuentranos con este mapa!'
-    }).addTo(map)
-
-    // configura el control de rutas
-    
-    let control = L.Routing.control({
-        waypoints: [
-            L.latLng(latitude,longitude),
-            L.latLng(40.492639,-3.653881)
-        ],
-        language:'es',
-        
-    }).addTo(map)
-}
-
-function error(){
-    let map = L.map('mapa',{
-        center:[40.49367, -3.65894],
-        zoom:14
-    })
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'Mapa de muestra'}).addTo(map)
-}
